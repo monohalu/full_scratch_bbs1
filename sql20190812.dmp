@@ -1,0 +1,103 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:8889
+-- Generation Time: Aug 11, 2019 at 04:33 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.2.20
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `dojo_fullscratch_bbs`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `members`
+--
+
+CREATE TABLE `members` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `name`, `email`, `password`, `created`, `modified`) VALUES
+(1, 'テスト', 'test1@test.com', '011c945f30ce2cbafc452f39840f025693339c42', '2019-08-11 14:46:12', '2019-08-11 05:46:12'),
+(2, '育児', 'monohalu@gmail.com', '92f2fd99879b0c2466ab8648afb63c49032379c1', '2019-08-11 15:11:25', '2019-08-11 06:11:25'),
+(3, 'テスト3', 'test3@test.com', 'f56d6351aa71cff0debea014d13525e42036187a', '2019-08-11 15:17:27', '2019-08-11 06:17:27'),
+(4, 'テスト4', 'test4@test.com', '92f2fd99879b0c2466ab8648afb63c49032379c1', '2019-08-11 15:21:49', '2019-08-11 06:21:49'),
+(5, 'テスト5', 'test5@test.com', 'ab874467a7d1ff5fc71a4ade87dc0e098b458aae', '2019-08-11 15:27:16', '2019-08-11 06:27:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `member_id` int(11) NOT NULL,
+  `reply_post_id` int(11) DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `message`, `image`, `member_id`, `reply_post_id`, `created`, `modified`) VALUES
+(23, 'こんにちは。', '20190811160615', 1, 0, '2019-08-12 01:06:15', '2019-08-11 16:06:15'),
+(24, 'こんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんはこんにちはこんばんは', '20190811162054', 1, 0, '2019-08-12 01:20:54', '2019-08-11 16:20:54'),
+(25, 'やっほー', '20190811162120sleep_twitter.png', 1, 0, '2019-08-12 01:21:20', '2019-08-11 16:21:20'),
+(26, 'ねむねむー', '20190811162151monohaluprofile.png', 1, 0, '2019-08-12 01:21:51', '2019-08-11 16:21:51'),
+(27, 'たくさんてすと', '20190811162204', 1, 0, '2019-08-12 01:22:04', '2019-08-11 16:22:04'),
+(28, 'たくさんてすと\r\n\r\nたくさんてすと\r\n\r\n', '20190811162210', 1, 0, '2019-08-12 01:22:10', '2019-08-11 16:22:10'),
+(29, 'たくさんてすと\r\n\r\nたくさんてすと\r\n\r\nたくさんてすと\r\n\r\n', '20190811162213', 1, 0, '2019-08-12 01:22:13', '2019-08-11 16:22:13'),
+(30, '@テスト こんばんは', '20190811162940', 1, 24, '2019-08-12 01:29:40', '2019-08-11 16:29:40');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `members`
+--
+ALTER TABLE `members`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
